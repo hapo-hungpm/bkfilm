@@ -1,0 +1,76 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<link rel="shortcut icon"
+	href="img/search_icon.png">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+	<link href="{% static 'login/css/style_tien.css' %}" rel="stylesheet" type="text/css" media="all" />
+	<link rel="stylesheet" href="style.css">
+	<title>Group 10</title>
+</head>
+
+<body>
+		<div class="center">
+
+			<form action="{% url 'polls:search' %}" method="get">
+			<div class="content-center">
+				<div class="img-google">
+					<img src="{% static 'login/images/icon_group.png' %}" width="272px" height="92px">
+				</div>
+				<div class="input-toogle">
+					<div class="input-google">
+						<div class="item-input">
+								<input class="input" type="text" name="search_query" value="{{ search_query }}">
+								<input type="hidden" name="page" value="{{ page }}">
+						</div>
+						<div class="item-input icon-input">
+							<img class="pointer" src="http://www.gstatic.com/inputtools/images/tia.png">
+						</div>
+						<div class=" item-input">
+							<img class="icon-input-mic pointer"
+							src="http://www.gstatic.com/images/branding/googlemic/2x/googlemic_color_24dp.png">
+						</div>
+
+					</div>
+				</div>
+				<div class="recom-toggle-index">
+					<div class="item-toggle">
+						<span>
+							Day la recommentation
+						</span>
+					</div>
+					<div class="item-toggle">
+						<span>
+							Day la recommentation
+						</span>
+					</div>
+				</div>
+				<div class="button-center">
+					<button>Tìm kiếm </button>
+
+					<input type="submit" value="Tìm kiếm">
+				</div>
+				<div class="text-center">
+					<p> &nbsp <a class="pointer-text">English</a> &nbsp <a class="pointer-text">Français</a>
+						&nbsp <a class="pointer-text">中文（繁體）</a></p>
+					</div>
+				</div>
+			</form>
+			</div>
+			<div class="footer"></div>
+		</body>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"
+		integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+		crossorigin="anonymous"></script>
+		<script type="text/javascript" src="main.js"></script>
+		<style>
+
+
+	</style>
+
+	</html>

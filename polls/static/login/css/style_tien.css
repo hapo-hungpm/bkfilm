@@ -1,0 +1,256 @@
+.header {
+    right: 0;
+    width: 100%;
+}
+
+.content-center {
+    margin: 140px auto;
+    width: 550px;
+    height: 233px;
+    flex-direction: column;
+}
+
+button {
+    height: 36px;
+    line-height: 27px;
+    background-color: #f2f2f2;
+    border: 1px solid #f2f2f2;
+    border-radius: 4px;
+    color: #5F6368;
+    margin: 11px 4px;
+    padding: 0 16px;
+    font-family: arial, sans-serif;
+    font-size: 14px;
+}
+
+.text-center {
+    text-align: center;
+    margin-top: 10px;
+    line-height: 28px;
+    font-size: small;
+}
+
+.button-center {
+    text-align: center;
+}
+
+.input-google {
+    display: flex;
+    align-items: center;
+    box-shadow: 0 1px 6px 0 rgba(32, 33, 36, 0.28);
+    border-color: rgba(223, 225, 229, 0);
+    border: 1px solid #dfe1e5;
+    /*border-radius: 24px;*/
+    /*width: 570px;*/
+    height: 45px;
+    /*margin: 40px auto;*/
+}
+
+.icon-input-mic {
+    width: 60%;
+}
+
+.input {
+    width: 445px;
+}
+
+input {
+    border: none;
+    outline: none;
+}
+
+.item-input {
+    margin: 15px 0px 15px 15px;
+}
+
+.img-google {
+    text-align: center;
+    margin: 20px;
+}
+
+.item {
+    padding-right: 20px;
+}
+
+.list-icon {
+    margin: 15px;
+    display: flex;
+    Justify-content: flex-end;
+    align-items: center;
+}
+
+.bell {
+    position: relative;
+    width: 25px;
+    height: 25px;
+    background-color: black;
+    color: white;
+    border-radius: 50%;
+    text-align: center;
+    cursor: pointer;
+}
+
+.grid {
+    position: relative;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.account {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    background-color: black;
+    color: white;
+    border-radius: 50%;
+    text-align: center;
+    cursor: pointer;
+}
+
+.icon-center {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translateX(-50%) translateY(-50%);
+}
+
+.icon {
+    margin-right: 20px;
+}
+
+.pointer {
+    color: rgba(0, 0, 0, 0.87);
+    cursor: pointer;
+}
+
+.pointer-text {
+    cursor: pointer;
+}
+
+.recom-toggle-index {
+    display: none;
+     box-shadow: 0 1px 6px 0 rgba(32, 33, 36, 0.28);
+    border-color: rgba(223, 225, 229, 0);
+    border: 1px solid #dfe1e5;
+}
+
+/** 
+    Result Page
+*/
+
+.header-result {
+    display: flex;
+    padding: 20px 20px 30px 15px;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    border-bottom: 1px #ccc solid;
+
+}
+
+.header-result .left a img {
+    width: 92px;
+    height: 33px;
+}
+.header-result .center .input-container {
+    display: flex;
+    align-items: center;
+    box-shadow: 0 1px 6px 0 rgba(32, 33, 36, 0.28);
+    border-color: rgba(223, 225, 229, 0);
+    border: 1px solid #dfe1e5;
+    /*border-radius: 24px;*/
+    width:  570px;
+    height:  40px;
+    margin-left: 30px;
+}
+.header-result .center .input-container .input-form {
+    margin-left: 10px;
+    padding: 10px;
+    width: 80%;
+    height: 100%;
+} 
+.header-result .center .input-container .input-form input {
+    width: 80%;
+    height: 100%;
+    font-size: 17px;
+}
+.header-result .center .input-container .icon-search img {
+    background: transparent;
+    height: 24px;
+    width: 24px;
+}
+
+/**
+    result page item list
+*/
+
+.item-list {
+    z-index: 1;
+    margin-top: 30px;
+}
+.text-count-result {
+    font-size: 13px;
+    color: #777;
+}
+.item-list .item {
+    margin-bottom: 20px;
+} 
+.item-list .item .title {
+    font-size: 18px;
+    color: #4285f4;
+}
+.item-list .item .source {
+    color: #006621;
+    font-size: 14px;
+}
+
+/**
+    pagination
+**/
+.pagination .page-item {
+    padding: 10px;
+}
+.pagination a.page-item.active span {
+    color: #000000 !important;
+}
+.input-toggle {
+    position: relative;
+} 
+.recom-toggle {
+    display: none;
+    z-index: 1000;
+    position: absolute;
+    background: white;
+    width: 570px;
+    /*border: 1px #ccc solid;*/
+    border-top:0;
+    box-shadow: 0 1px 6px 0 rgba(32, 33, 36, 0.28);
+    border-color: rgba(223, 225, 229, 0);
+    border: 1px solid #dfe1e5;
+
+    /*border-radius: 10px;*/
+    margin-left: 30px;
+}
+.item-toggle {
+    background-color: white;
+    padding: 5px 20px 5px 10px;
+    width: 100%;
+}
+.item-toggle:hover {
+    background-color: #ccc;
+}
+.item-input.input-search {
+    margin-left: 20px;
+}
+.item-input.input-search:hover {
+    cursor: pointer;
+}
+
+em {
+    font-weight: bold;
+}

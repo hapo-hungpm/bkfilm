@@ -1,0 +1,211 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="shortcut icon"
+	href="img/search_icon.png">
+
+<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+	<link href="{% static 'login/css/style_tien.css' %}" rel="stylesheet" type="text/css" media="all" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+	<title>Result</title>
+	<style>
+		em {
+			font-weight: bold;
+		}
+
+		input {
+			border: solid 0.1px grey;
+		}
+	</style>
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="header-result row">
+			<div class="left col-sm-1">
+				<a href="#">
+					<img src="{% static 'login/images//icon_group.png' %}" alt="">
+				</a>
+			</div>
+			<div class="center col-sm-10">
+						<form action="{% url 'polls:searchAdvance' %}" method="get">
+				<div class="input-toggle">
+					<div class="input-container">
+						<div class="input-form">
+							<input class="input" type="text" name="search_query" id="searchQuery" value="{{ search_query }}">
+						</div>
+						<!-- <div class="icon"> -->
+							<div class="item-input">
+								<img class="pointer" src="http://www.gstatic.com/inputtools/images/tia.png">
+							</div>
+							<div class="item-input input-search">
+								<i class="fas fa-search" style="color: #4285f4; font-size: 18px;">
+									<input type="submit" value=" "/>
+								</i>
+							</div>
+						<!-- </div> -->
+					</div>
+					<div class="recom-toggle">
+						<div class="item-toggle">
+							<span>
+								Day la recommentation
+							</span>
+						</div>
+						<div class="item-toggle">
+							<span>
+								Day la recommentation
+							</span>
+						</div>
+					</div>
+				</div>
+
+							<input class="input" type="text" placeholder="author" name="author" value="{{ author }}">
+							<input class="input" type="text" placeholder="category" name="category" value="{{ category }}">
+							<input class="input" type="text" placeholder="time" name="time" value="{{ time }}">
+							<input type="hidden" name="page" value="{{ page }}">
+				</form>
+			</div>
+			<div class="right">
+
+			</div>
+		</div>
+
+		<!-- List item search -->
+		{% if init == False %}
+		<div class="list-container row">
+			<div class="col-sm-6 col-sm-offset-2">
+				<span class="text-count-result"><i>Tìm thấy {{ numFound}} kết quả ( {{ qtime }} giây )</i></span>
+				<div class="item-list">
+
+					<!-- loop -->
+
+					{% for doc in documents %}
+					<div class="item">
+						<div class="title">
+							<a href="#">
+								{{ doc.title }} - {{ doc.author }}
+							</a>
+						</div>
+						<div class="source">
+							<span>
+								{{ doc.url }}
+							</span>
+						</div>
+						<div class="summary">
+							<span>
+								<span style="color: #777;"> 14 thg 2, 2019 </span>- {{ doc.hl_content | safe }}
+							</span>
+						</div>
+
+					</div>
+					{% endfor %}
+					<!-- end loop-->
+				</div>
+
+				<!--end item list-->
+
+			</div>
+		</div>
+		<!-- pagination -->
+
+		<div class="row">
+			<div class="col-sm-6 col-sm-offset-3">
+				<div class="pagination text-center">
+					<span>Trang</span>
+					<span>
+						{% for p in pages%}
+							{% if p == page %}
+							<a href="{% url 'polls:search' %}?search_query={{ search_query }}&page={{ p }}"
+						   	class="page-item active"><span>{{ p }}</span></a>
+						  	{% else %}
+						  	<a class="page-link" href="{% url 'polls:search' %}?search_query={{ search_query }}&page={{ p }}">
+							  {{ p }}</a>
+						    {% endif %}
+						{% endfor %}
+					</span>
+
+				  {% if page == end_page %}
+					<li class="page-item disabled">
+					  <a class="page-link" href="#">Next</a>
+					</li>
+				  {% else %}
+					<li class="page-item">
+					  <a class="page-link" href="{% url 'polls:search' %}?search_query={{ search_query }}&page={{ page |add:1}}">Next</a>
+					</li>
+				  {% endif %}
+				</div>
+			</div>
+
+		</div>
+		{% endif %}
+	</div>
+
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"
+	integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+	crossorigin="anonymous"></script>
+	<script type="text/javascript" src="main.js"></script>
+
+	<script>
+
+$(document).ready(function(){
+	$("#searchQuery").keyup(function() {
+		alert($("#searchQuery").val());
+		$.ajax({
+				url: 'suggest/title',
+				data: {
+					'search_query': $("#searchQuery").val()
+				},
+				dataType: 'json',
+				success: function (data) {
+					alert(data)
+			}
+			});
+	});
+});
+
+//document.onkeypress = keyPress;
+//if the key pressed is 'enter' runs the function newEntry()
+function keyPress(e) {
+  var x = e || window.event;
+  var key = (x.keyCode || x.which);
+  if (key == 13 || key == 3) {
+			$.ajax({
+				url: 'ajax/validate_username/',
+				data: {
+					'data': $("#chatbox").val()
+				},
+				dataType: 'json',
+				success: function (data) {
+					newEntry(data);
+			}
+			});
+    //runs this function when enter is pressed
+
+  }
+  if (key == 38) {
+    console.log('hi')
+      //document.getElementById("chatbox").value = lastUserMessage;
+  }
+}
+
+function placeHolder() {
+  document.getElementById("chatbox").placeholder = "";
+}
+</script>
+</body>
+</html>
